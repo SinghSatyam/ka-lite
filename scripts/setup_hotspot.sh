@@ -14,7 +14,7 @@ cd $HOME/ka-lite-hotspot
 ./build_deb_file.sh
 echo "deb file created."
 echo "Going to install the deb package created"
-#dpkg -i ka-lite-hotspot*.deb
+dpkg -i ka-lite-hotspot*.deb
 echo "ka-lite-hotspot Installed"
 echo ''
 
