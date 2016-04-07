@@ -10,12 +10,6 @@ then
   exit 1
 fi
 
-echo "Downloading the package lists from the repositories and updating them to get information on the newest versions of packages and their dependencies.."
-apt-get update
-echo "Package list updated.."
-echo "Installing python-pip and nginx"
-apt-get install python-pip nginx -y
-echo "Installation complete"
 echo "Removing default nginx configuration."
 rm -rf /etc/nginx/sites-enabled/default
 rm -rf /etc/nginx/sites-available/default
