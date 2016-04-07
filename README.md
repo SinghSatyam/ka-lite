@@ -20,11 +20,11 @@ At this moment, following are installed and configured:
 - python
 - nginx
 - devscripts
-- debhelper
-- hostapd
-- dnsmasq
-- ka-lite (using pip)
-- nginx configuration is done for serving static assets
+-  debhelper
+-  hostapd
+-  dnsmasq
+-  ka-lite (using pip)
+-  nginx configuration is done for serving static assets
 
 - In the scripts folder, run the third script which installs the docker:
 ```sh
@@ -37,3 +37,12 @@ $ ./script_4.sh
 ```
 Note: You will need credentials for pulling image from dockerhub.
 
+
+----------
+
+
+# Optional
+You may want to install TeamViewer for remote debugging. For that, In the scripts folder, run the `setup_teamviewer.sh` :
+```sh
+$ ./setup_teamviewer.sh
+```
