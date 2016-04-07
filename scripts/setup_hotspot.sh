@@ -18,14 +18,24 @@ dpkg -i ka-lite-hotspot*.deb
 echo "ka-lite-hotspot Installed"
 echo ''
 
-cat <<-EOF
+# First, try to find Wi-Pi dongles that are connected (these start with MAC address 00:0f:13)
+INTERFACE_WLAN=$(ifconfig 2>&1 | grep "HWaddr 00:0f:13" | sed -e 's/ .*//g' | head -n 1)
+
+# If we didn't find any Wi-Pi dongles, look for devices starting with "wlan", instead
+if [[ ! $INTERFACE_WLAN ]]; then
+	INTERFACE_WLAN=$(iwconfig 2>&1 | grep "^wlan" | sed -e 's/ .*//g' | head -n 1)
+fi
+
+# If we still haven't found any candidate interfaces, bail
+if [[ ! $INTERFACE_WLAN ]]; then
+	cat <<-EOF
 -X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X
 
 Find the interface name of the dongle which is plugged in by ifconfig. In most cases it will be wlan1.
 
 Change in the following file by:
 
-	sudo vim /etc/network/interaces
+	sudo vim /etc/network/interfaces
 
 Add the following line:
 
@@ -38,5 +48,21 @@ Run the following commands:
 
 -X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-
 EOF
+
+	exit 1
+fi
+
+if [[ $INTERFACE_WLAN ]]; then
+	echo "iface $INTERFACE_WLAN inet manual" >> /etc/network/interfaces
+	echo "Entry created for $INTERFACE_WLAN in /etc/network/intefaces"
+	echo "Restarting Network Services"
+	sudo service networking restart
+	sudo service network-manager restart
+	echo "Restarted"
+fi
+
+echo "Dongle setup done. If you are not connected to the kalite, please restart the system and you should be connected to the kalite SSID."
+
+
 
 
