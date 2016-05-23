@@ -4,5 +4,6 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 apt-get -y update
-apt-get -y install vim vlc python-pip nginx git devscripts debhelper pip install ka-lite
+apt-get -y install vim vlc python-pip nginx git 
+pip install ka-lite
 gsettings set org.gnome.desktop.session idle-delay 0
