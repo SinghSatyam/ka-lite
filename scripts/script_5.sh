@@ -22,5 +22,4 @@ printf \"\033[31;4m Please Plugin Wireless Dongle and then re-run this command.\
 printf \"\033[31m If you are using Wi-Fi router for facilitating students to use Magogenie, please connect this machine to a network and then re-run this script.\033[0m\n\";
 }
 " > ~/Desktop/magogenie.sh
-chmod 777 ~/Desktop/kalite.sh
-
+chmod 777 ~/Desktop/magogenie.sh
