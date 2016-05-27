@@ -7,3 +7,4 @@ apt-get -y update
 apt-get -y install vim vlc python-pip nginx git 
 pip install ka-lite
 gsettings set org.gnome.desktop.session idle-delay 0
+gsettings set org.gnome.nautilus.preferences executable-text-activation launch
