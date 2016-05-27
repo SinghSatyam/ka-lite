@@ -6,9 +6,10 @@ if [ $? -eq 0 ]; then
     	wget -O speedtest-cli -o /dev/null https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py
 	chmod +x speedtest-cli
 	./speedtest-cli --simple
+	container_id=$(docker ps --filter="ancestor=singhsatyam/magogenie:v8" -q)
 	read -p "Are you sure you want CONTINUE at this speed(y/n)?" choice
 	case "$choice" in 
-	y|Y ) echo "yes";;
+	y|Y ) docker exec $container_id su - deployer -c "sh update_mago.sh";;
 	n|N ) echo "no";;
 	* ) echo "invalid";;
 	esac
