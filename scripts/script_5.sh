@@ -3,6 +3,7 @@ echo "#!/bin/bash
 notify-send \"Starting KaLite\"
 sudo kalite start --port=9500
 notify-send \"KaLite Started\"" > ~/Desktop/kalite.sh
+chmod 777 ~/Desktop/kalite.sh
 echo "#!/bin/bash
 notify-send \"Starting Magogenie\"
 sudo kill \$(sudo lsof -t -i:80)
@@ -21,4 +22,5 @@ printf \"\033[31;4m Please Plugin Wireless Dongle and then re-run this command.\
 printf \"\033[31m If you are using Wi-Fi router for facilitating students to use Magogenie, please connect this machine to a network and then re-run this script.\033[0m\n\";
 }
 " > ~/Desktop/magogenie.sh
+chmod 777 ~/Desktop/kalite.sh
 
