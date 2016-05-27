@@ -7,6 +7,7 @@ chmod 777 ~/Desktop/kalite.sh
 echo "#!/bin/bash
 notify-send \"Starting Magogenie\"
 sudo kill \$(sudo lsof -t -i:80)
+sudo service docker stop
 sudo service docker start
 {
 docker start magogenie_data8
