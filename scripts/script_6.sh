@@ -9,7 +9,7 @@ if [ $? -eq 0 ]; then
 	container_id=$(docker ps --filter="ancestor=singhsatyam/magogenie:v8" -q)
 	read -p "Are you sure you want CONTINUE at this speed(y/n)?" choice
 	case "$choice" in 
-	y|Y ) docker exec $container_id su - deployer -c "sh wget http://www.magogenie.com/scripts/get_deployment_script.sh" && docker exec $container_id su - deployer -c "sh get_deployment_script.sh" && docker exec $container_id su - deployer -c "sh update_mago.sh";;
+	y|Y ) docker exec $container_id su - deployer -c "wget http://www.magogenie.com/scripts/get_deployment_script.sh" && docker exec $container_id su - deployer -c "sh get_deployment_script.sh" && docker exec $container_id su - deployer -c "sh update_mago.sh";;
 	n|N ) echo "Get a life, get a good internet connection. :)";;
 	* ) echo "invalid";;
 	esac
